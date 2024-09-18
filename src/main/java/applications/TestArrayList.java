@@ -12,7 +12,7 @@ public class TestArrayList {
         // Create a new random generator
         Random randomGen = new Random();
         // Generate 10 random elements and add to our list
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             // Add the new element to the list
             nums.add(randomGen.nextInt());
         }
