@@ -8,6 +8,12 @@ public class ArrayList {
     private int count;
 
     // Create a constructor (equivalent to __init__) to set up each new ArrayList
+
+    /**
+     * Default constructor for ArrayList.
+     *
+     * This will initialise the internal array to a size of 10. Subsequent increases are made by the grow() method.
+     */
     public ArrayList(){
         // Set the initial array size to 10
         data = new int[10];
@@ -15,8 +21,15 @@ public class ArrayList {
         count = 0;
     }
 
-    // Create a method to add a new element to the list
-    // This method takes in a number to be added and returns a boolean
+    /**
+     * Add a new element to the list.
+     *
+     * Where there is insufficient space remaining in the internal array, the array size will be increased using the
+     * grow() method.
+     *
+     * @param num The value to be added.
+     * @return True. (There is no situation where this will not add)
+     */
     public boolean add(int num){
         if(data.length == count){
             grow();
@@ -29,7 +42,12 @@ public class ArrayList {
         return true;
     }
 
-    // Create a method to get an element from a specific position
+    /**
+     * Get the element at the specified position.
+     * @param index The position from which to retrieve the element.
+     * @return The element at the specified position.
+     * @throws IndexOutOfBoundsException Where the supplied position is outside the bounds of the data in the array.
+     */
     public int get(int index){
         // Check if the position is valid, i.e. not AFTER the end of the list or BEFORE the start
         if(index >= count || index < 0){
@@ -40,12 +58,19 @@ public class ArrayList {
         return data[index];
     }
 
-    // Create a method to get the size of the list
+    /**
+     * Get the number of elements currently stored in the list.
+     * @return The number of elements present in the list.
+     */
     public int size(){
         // Return the number of elements in the list
         return count;
     }
 
+    /**
+     * Increase the size of the internal array. This will increase the size of the internal array by 15 slots each
+     * time it is called.
+     */
     public void grow(){
         int [] enlargedArray = new int[data.length+15];
 
