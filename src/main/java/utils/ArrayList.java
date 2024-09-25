@@ -81,6 +81,13 @@ public class ArrayList {
         data = enlargedArray;
     }
 
+    /**
+     * Deletes a value from a specified position.
+     * @param pos The position to delete from.
+     * @return The value deleted from the list.
+     *
+     * @throws ArrayIndexOutOfBoundsException If the position to be deleted from is outside the boundaries of the array.
+     */
     public int shiftDelete(int pos){
         validatePosition(pos);
 
