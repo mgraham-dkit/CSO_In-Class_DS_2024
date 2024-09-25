@@ -80,4 +80,25 @@ public class ArrayList {
 
         data = enlargedArray;
     }
+
+    public int shiftDelete(int pos){
+        validatePosition(pos);
+
+        int deleted = data[pos];
+
+        for (int i = pos; i < count-1; i++) {
+            data[i] = data[i+1];
+        }
+
+        data[data.length-1] = 0;
+        count--;
+
+        return deleted;
+    }
+
+    private void validatePosition(int pos) {
+        if(pos < 0 || pos >= count){
+            throw new ArrayIndexOutOfBoundsException("Supplied position must be within the boundary of the array");
+        }
+    }
 }
