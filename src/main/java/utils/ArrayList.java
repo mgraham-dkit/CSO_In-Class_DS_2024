@@ -66,12 +66,11 @@ public class ArrayList {
         // Return the number of elements in the list
         return count;
     }
-
     /**
      * Increase the size of the internal array. This will increase the size of the internal array by 15 slots each
      * time it is called.
      */
-    public void grow(){
+    private void grow(){
         int [] enlargedArray = new int[data.length+15];
 
         for (int i = 0; i < data.length; i++) {
