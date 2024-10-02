@@ -3,22 +3,22 @@ package utils;
 public class LinkedList {
     private int count;
     private Node head;
+    private Node tail;
 
     public LinkedList(){
         this.head = null;
+        this.tail = null;
         count = 0;
     }
 
     public void add(int data){
         Node newNode = new Node(data);
         if(head == null){
-            this.head = newNode;
+            head = newNode;
+            tail = newNode;
         }else{
-            Node current = head;
-            while(current.next != null){
-                current = current.next;
-            }
-            current.next = newNode;
+            tail.next = newNode;
+            tail = newNode;
         }
         count++;
     }
