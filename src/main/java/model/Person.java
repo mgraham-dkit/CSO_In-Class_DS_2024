@@ -1,6 +1,6 @@
 package model;
 
-public class Person {
+public class Person implements Comparable<Person> {
     private String firstName;
     private String lastName;
     private int age;
@@ -59,5 +59,18 @@ public class Person {
         result = 31 * result + lastName.hashCode();
         result = 31 * result + age;
         return result;
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        int result = this.firstName.compareTo(o.firstName);
+
+        if(result < 0){
+            return -1;
+        }else if(result > 0){
+            return 1;
+        }
+
+        return 0;
     }
 }
