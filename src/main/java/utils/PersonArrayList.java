@@ -9,7 +9,7 @@ public class PersonArrayList {
     private Person[] data;
     // Every ArrayList will contain its own count of elements
     private int count;
-    private int expansionFactor;
+    private final int expansionFactor;
 
     // Create a constructor (equivalent to __init__) to set up each new ArrayList
 
