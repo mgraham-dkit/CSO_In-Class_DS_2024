@@ -23,35 +23,29 @@ public class LinkedList {
         count++;
     }
 
-    public boolean insert(int value, int pos){
+    public void insert(int value, int pos){
         if(pos < 0 || pos > count){
             throw new IndexOutOfBoundsException("Illegal position supplied - position must be within bounds of list");
         }
 
         if(pos == count){
             add(value);
-            return true;
-        }
-
-        if(pos == 0){
+        }else if(pos == 0){
             addToStart(value);
-            return true;
+        }else {
+            Node newNode = new Node(value);
+
+            Node current = head;
+            Node prev = null;
+            for (int i = 0; i < pos; i++) {
+                prev = current;
+                current = current.next;
+            }
+            newNode.next = current;
+            prev.next = newNode;
+
+            count++;
         }
-
-        Node newNode = new Node(value);
-
-        Node current = head;
-        Node prev = null;
-        for (int i = 0; i < pos; i++) {
-            prev = current;
-            current = current.next;
-        }
-        newNode.next = current;
-        prev.next = newNode;
-
-        count++;
-
-        return true;
     }
 
     public void addToStart(int value){
