@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList {
     private int count;
     private Node head;
@@ -9,6 +11,21 @@ public class LinkedList {
         this.head = null;
         this.tail = null;
         count = 0;
+    }
+
+    public int size(){
+        return count;
+    }
+
+    public int get(int pos){
+        validatePosition(pos);
+
+        Node current = head;
+        for (int i = 0; i < pos; i++) {
+            current = current.next;
+        }
+
+        return current.data;
     }
 
     public void add(int data){
@@ -58,6 +75,74 @@ public class LinkedList {
             head = newNode;
         }
         count++;
+    }
+
+    public int remove(int pos){
+        validatePosition(pos);
+
+        if(pos == 0){
+            return removeFirst();
+        }else if(pos == count-1){
+            return removeLast();
+        }else{
+            Node current = head;
+            Node prev = null;
+
+            for (int i = 0; i < pos; i++) {
+                prev = current;
+                current = current.next;
+            }
+            int deleted = current.data;
+            prev.next = current.next;
+            count--;
+            return deleted;
+        }
+    }
+
+    private void validatePosition(int pos) {
+        if(pos < 0 || pos >= count){
+            throw new IndexOutOfBoundsException("Position must be within the boundaries of the list");
+        }
+    }
+
+    public int removeFirst(){
+        if(head == null){
+            throw new NoSuchElementException("Cannot delete from an empty list");
+        }
+
+        int deleted = head.data;
+
+        head = head.next;
+        if(head == null){
+            tail = null;
+        }
+        count--;
+
+        return deleted;
+    }
+
+    public int removeLast(){
+        if(head == null){
+            throw new NoSuchElementException("Cannot delete from an empty list");
+        }
+
+        int deleted = 0;
+        if(head == tail) {
+            deleted = head.data;
+            head = null;
+            tail = null;
+        }else {
+            Node current = head;
+            while(current.next != tail) {
+                current = current.next;
+            }
+            current.next = null;
+            deleted = tail.data;
+            tail = current;
+        }
+        count--;
+
+        return deleted;
     }
 
     private static class Node{
