@@ -28,6 +28,17 @@ public class LinkedList {
         return current.data;
     }
 
+    public int indexOf(int value){
+        Node current = head;
+        for (int i = 0; i < count; i++) {
+            if(value == current.data){
+                return i;
+            }
+            current = current.next;
+        }
+        return -1;
+    }
+
     public void add(int data){
         Node newNode = new Node(data);
         if(head == null){
