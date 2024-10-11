@@ -54,4 +54,45 @@ class ArrayListTest {
             assertEquals(values[i], retrieved);
         }
     }
+
+    @Test
+    void testGet_ValidPosition(){
+        ArrayList myList = new ArrayList();
+
+        int expResult = 10;
+        int [] values = new int[expResult+1];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = i;
+        }
+
+        for (int value : values) {
+            myList.add(value);
+        }
+
+        int result = myList.get(myList.size()-1);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    void testGet_InvalidPosition(){
+        ArrayList myList = new ArrayList();
+
+        int size = 10;
+        int [] values = new int[size];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = i;
+        }
+
+        for (int value : values) {
+            myList.add(value);
+        }
+
+        // To check for an exception, assert that it is thrown when the appropriate situation arises.
+        // Need to specify:
+        // The name of the exception class
+        // A lambda function in which the method under test is called
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            myList.get(myList.size());
+        });
+    }
 }
