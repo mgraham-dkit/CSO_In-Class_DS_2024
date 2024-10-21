@@ -63,14 +63,6 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person o) {
-        int result = this.firstName.compareTo(o.firstName);
-
-        if(result < 0){
-            return -1;
-        }else if(result > 0){
-            return 1;
-        }
-
-        return 0;
+        return this.firstName.compareTo(o.firstName) * -1;
     }
 }

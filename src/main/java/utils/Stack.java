@@ -2,7 +2,7 @@ package utils;
 
 import java.util.LinkedList;
 
-public class Stack {
+public class Stack{
     private final LinkedList<String> stack;
 
     public Stack(){

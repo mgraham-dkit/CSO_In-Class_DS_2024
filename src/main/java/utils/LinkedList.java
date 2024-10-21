@@ -3,9 +3,9 @@ package utils;
 import java.util.NoSuchElementException;
 
 public class LinkedList {
-    private int count;
-    private Node head;
-    private Node tail;
+    protected int count;
+    protected Node head;
+    protected Node tail;
 
     public LinkedList(){
         this.head = null;
@@ -156,7 +156,7 @@ public class LinkedList {
         return deleted;
     }
 
-    private static class Node{
+    protected static class Node{
         int data;
         Node next;
 
