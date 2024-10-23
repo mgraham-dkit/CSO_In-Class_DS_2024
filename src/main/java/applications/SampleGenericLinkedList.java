@@ -4,7 +4,7 @@ import utils.GenericLinkedList;
 
 public class SampleGenericLinkedList {
     public static void main(String[] args) {
-        GenericLinkedList<String> newList = new GenericLinkedList<String>();
+        GenericLinkedList<String> newList = new GenericLinkedList<>();
 
         newList.add("Hello there");
         newList.add("Byebye");
@@ -12,7 +12,7 @@ public class SampleGenericLinkedList {
             System.out.println(i + ") " + newList.get(i));
         }
 
-        GenericLinkedList<Integer> list2 = new GenericLinkedList<Integer>();
+        GenericLinkedList<Integer> list2 = new GenericLinkedList<>();
 
         list2.add(15);
         list2.add(45);

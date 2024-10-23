@@ -1,7 +1,7 @@
 package utils;
 
 import java.util.NoSuchElementException;
-
+@SuppressWarnings("unused")
 public class GenericLinkedList<T> {
     protected int count;
     protected Node<T> head;
@@ -40,7 +40,7 @@ public class GenericLinkedList<T> {
     }
 
     public void add(T data){
-        Node<T> newNode = new Node<T>(data);
+        Node<T> newNode = new Node<>(data);
         if(head == null){
             head = newNode;
             tail = newNode;
@@ -61,7 +61,7 @@ public class GenericLinkedList<T> {
         }else if(pos == 0){
             addToStart(value);
         }else {
-            Node<T> newNode = new Node<T>(value);
+            Node<T> newNode = new Node<>(value);
 
             Node<T> current = head;
             Node<T> prev = null;
@@ -77,7 +77,7 @@ public class GenericLinkedList<T> {
     }
 
     public void addToStart(T value){
-        Node<T> newNode = new Node<T>(value);
+        Node<T> newNode = new Node<>(value);
         if(head == null){
             head = newNode;
             tail = newNode;
