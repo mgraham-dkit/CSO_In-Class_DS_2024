@@ -5,19 +5,34 @@ import java.util.ArrayList;
 public class CollisionResistantHashMap<K, V> {
     private java.util.ArrayList<Entry<K,V>>[] map = new java.util.ArrayList[103];
     private int count = 0;
+    private static final double LOAD_FACTOR = 0.75;
+    private static final int EXPANSION_FACTOR = 3;
 
     public CollisionResistantHashMap() {
 
+    }
+
+    private boolean hasCapacity(){
+        return count < map.length*LOAD_FACTOR;
     }
 
     private int hash(K key){
         return Math.abs(key.hashCode()) % map.length;
     }
 
+    private void updateMap(){
+        java.util.ArrayList<Entry<K,V>>[] oldMap = map;
+        map = new java.util.ArrayList[map.length*EXPANSION_FACTOR];
+        // todo: For each element in original map, re-add to new map.
+    }
+
     public V put(K key, V value){
         // Validation
         if(key == null){
             throw new IllegalArgumentException("Key cannot be null");
+        }
+        if(!hasCapacity()){
+            updateMap();
         }
         // Calculate appropriate slot/bucket for use based on key
         int pos = hash(key);
@@ -42,6 +57,25 @@ public class CollisionResistantHashMap<K, V> {
         return null;
     }
 
+    public V get(K key){
+        // Validation
+        if(key == null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+
+        int pos = hash(key);
+        if(map[pos] == null){
+            return null;
+        }
+
+        int index = map[pos].indexOf(new Entry(key, null));
+        if(index == -1){
+            return null;
+        }
+
+        Entry<K, V> match = map[pos].get(index);
+        return match.value;
+    }
 
     private static class Entry<K, V>{
         K key;
