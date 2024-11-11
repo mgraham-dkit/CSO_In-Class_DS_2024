@@ -1,14 +1,28 @@
 package model;
 
 public class Person implements Comparable<Person> {
+    private static int personCount = 0;
+
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+
+        personCount++;
+        this.id = personCount;
     }
 
     public String getFirstName() {

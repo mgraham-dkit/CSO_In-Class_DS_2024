@@ -23,7 +23,6 @@ public class CollisionResistantHashMap<K, V> {
     private void updateMap(){
         java.util.ArrayList<Entry<K,V>>[] oldMap = map;
         map = new java.util.ArrayList[map.length*EXPANSION_FACTOR];
-        // todo: For each element in original map, re-add to new map.
 
         for (int i = 0; i < oldMap.length; i++) {
             if(oldMap[i] == null) {
@@ -31,7 +30,7 @@ public class CollisionResistantHashMap<K, V> {
             }
 
             for (int j = 0; j < oldMap[i].size(); j++) {
-                Entry<K, V> currentEntry = oldMap[i].get(i);
+                Entry<K, V> currentEntry = oldMap[i].get(j);
                 K key = currentEntry.key;
                 V value = currentEntry.value;
 
@@ -91,6 +90,21 @@ public class CollisionResistantHashMap<K, V> {
         return match.value;
     }
 
+    public void display(){
+        for (int i = 0; i < map.length; i++) {
+            if(map[i] == null) {
+                System.out.println("SLot " + i + ") Null");
+                continue;
+            }
+
+            System.out.println("Slot " + i + ")");
+            for (int j = 0; j < map[i].size(); j++) {
+                Entry<K, V> currentEntry = map[i].get(j);
+                System.out.println("Entry " + j + " -> " + currentEntry);
+            }
+        }
+    }
+
     private static class Entry<K, V>{
         K key;
         V value;
@@ -112,6 +126,14 @@ public class CollisionResistantHashMap<K, V> {
         @Override
         public int hashCode() {
             return key.hashCode();
+        }
+
+        @Override
+        public String toString() {
+            return "Entry{" +
+                    "key=" + key +
+                    ", value=" + value +
+                    '}';
         }
     }
 }
