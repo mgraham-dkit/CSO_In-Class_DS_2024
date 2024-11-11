@@ -3,7 +3,7 @@ package utils;
 import java.util.ArrayList;
 
 public class CollisionResistantHashMap<K, V> {
-    private java.util.ArrayList<Entry<K,V>>[] map = new java.util.ArrayList[103];
+    protected java.util.ArrayList<Entry<K,V>>[] map = new java.util.ArrayList[103];
     private int count = 0;
     private static final double LOAD_FACTOR = 0.75;
     private static final int EXPANSION_FACTOR = 3;
@@ -16,7 +16,7 @@ public class CollisionResistantHashMap<K, V> {
         return count < map.length*LOAD_FACTOR;
     }
 
-    private int hash(K key){
+    protected int hash(K key){
         return Math.abs(key.hashCode()) % map.length;
     }
 
@@ -24,6 +24,20 @@ public class CollisionResistantHashMap<K, V> {
         java.util.ArrayList<Entry<K,V>>[] oldMap = map;
         map = new java.util.ArrayList[map.length*EXPANSION_FACTOR];
         // todo: For each element in original map, re-add to new map.
+
+        for (int i = 0; i < oldMap.length; i++) {
+            if(oldMap[i] == null) {
+                continue;
+            }
+
+            for (int j = 0; j < oldMap[i].size(); j++) {
+                Entry<K, V> currentEntry = oldMap[i].get(i);
+                K key = currentEntry.key;
+                V value = currentEntry.value;
+
+                put(key, value);
+            }
+        }
     }
 
     public V put(K key, V value){
