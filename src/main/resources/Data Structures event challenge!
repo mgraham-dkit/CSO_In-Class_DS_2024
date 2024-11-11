@@ -1,0 +1,5 @@
+Events collected from multiple sources.
+- Display all events in order of occurrence
+- Filter by source
+- Error has occurred, sensors firing duplicate events. Deduplicate dataset.
+- Get all active sources, sorted by most frequent source
