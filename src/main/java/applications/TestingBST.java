@@ -11,6 +11,10 @@ public class TestingBST {
         bst.insert(5);
         bst.insert(3);
         bst.insert(15);
+        bst.insert(-100);
+        bst.insert(9);
+        bst.insert(22);
+        bst.insert(50);
         bst.inOrderDisplay();
         System.out.println();
 
@@ -18,5 +22,8 @@ public class TestingBST {
         while(iterator.hasNext()){
             System.out.print(iterator.next() + ", ");
         }
+        System.out.println();
+        System.out.println("Min: " + bst.getMin());
+        System.out.println("Max: " + bst.getMax());
     }
 }

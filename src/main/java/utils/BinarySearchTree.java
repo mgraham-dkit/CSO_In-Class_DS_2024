@@ -21,6 +21,34 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return root == null;
     }
 
+    public E getMin(){
+        if(root == null){
+            return null;
+        }
+        return getMin(root);
+    }
+
+    private E getMin(Node<E> root){
+        if(root.left == null){
+            return root.data;
+        }
+        return getMin(root.left);
+    }
+
+    public E getMax(){
+        if(root == null){
+            return null;
+        }
+        return getMax(root);
+    }
+
+    private E getMax(Node<E> root){
+        if(root.right == null){
+            return root.data;
+        }
+        return getMax(root.right);
+    }
+
     public boolean contains(E element) {
         validateElement(element);
         return contains(root, element);
