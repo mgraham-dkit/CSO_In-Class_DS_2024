@@ -25,5 +25,31 @@ public class TestingBST {
         System.out.println();
         System.out.println("Min: " + bst.getMin());
         System.out.println("Max: " + bst.getMax());
+
+        bst.removeMin();
+        bst.inOrderDisplay();
+        System.out.println();
+
+        bst.removeMax();
+        bst.inOrderDisplay();
+        System.out.println();
+//        System.out.println("Size before removing: " + bst.size());
+//        System.out.println(bst.remove(22));
+//        System.out.println("Size after removing: " + bst.size());
+//        System.out.println(bst.remove(0));
+//        System.out.println("Size after removing: " + bst.size() + " (no match so no change)");
+//        bst.inOrderDisplay();
+//        System.out.println();
+//        System.out.println("--------------");
+//        bst.delete(15);
+//        System.out.println("Size after removing: " + bst.size());
+//        bst.inOrderDisplay();
+//        System.out.println();
+//        System.out.println("---------------------");
+//        bst.delete(5);
+//        System.out.println("Size after removing: " + bst.size());
+//        bst.inOrderDisplay();
+//        System.out.println("");
+//        System.out.println("---------------------");
     }
 }
